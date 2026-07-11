@@ -1,0 +1,17 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: portfolio-back-api
+    restart: unless-stopped
+    ports:
+      - "${PORT}:${PORT}"
+    env_file:
+      - .env
+    networks:
+      - mongo_network
+
+networks:
+  mongo_network:
+    external: true
