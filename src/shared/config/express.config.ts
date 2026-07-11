@@ -4,7 +4,7 @@ export const corsConfig = {
   origin: env.ORIGIN || '*',
   credentials: !!env.ORIGIN,
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'Cache-Control'],
 };
 
 export const jsonConfig = {
@@ -20,7 +20,6 @@ export const urlEncodeConfig = {
   parameterLimit: 1000,
 };
 
-// Unica fuente de verdad para multer
 export const multerConfig = {
   fileSizeLimitMB: 10,
 };
