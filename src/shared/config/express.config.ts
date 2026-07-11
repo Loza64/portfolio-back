@@ -3,6 +3,7 @@ import { env } from 'src/shared/config/env';
 export const corsConfig = {
   origin: env.ORIGIN || '*',
   credentials: !!env.ORIGIN,
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   allowedHeaders: ['Content-Type', 'Authorization'],
 };
 
