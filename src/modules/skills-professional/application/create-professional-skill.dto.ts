@@ -10,8 +10,7 @@ export class CreateProfessionalSkillDto {
   name!: string;
 
   @IsNotEmpty()
-  @IsNumber()
-  @Min(0, { message: 'percentage debe ser al menos 0.' })
-  @Max(100, { message: 'percentage no puede superar 100.' })
-  percentage!: number;
+  @IsString()
+  @Length(1, 50)
+  icon!: string;
 }

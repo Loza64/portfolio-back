@@ -3,7 +3,7 @@ import { ProfessionalSkillRepository } from 'src/modules/skills-professional/dom
 import { ProfessionalSkillModel, ProfessionalSkillDocument } from 'src/modules/skills-professional/infrastructure/persistence/professional-skill.schema';
 
 const toDomain = (doc: ProfessionalSkillDocument): ProfessionalSkill =>
-  new ProfessionalSkill(doc.id as string, doc.name, doc.percentage, doc.createdAt);
+  new ProfessionalSkill(doc.id as string, doc.name, doc.icon, doc.createdAt);
 
 export class MongoProfessionalSkillRepository implements ProfessionalSkillRepository {
   async findAll(): Promise<ProfessionalSkill[]> {
@@ -24,7 +24,7 @@ export class MongoProfessionalSkillRepository implements ProfessionalSkillReposi
   async save(skill: ProfessionalSkill): Promise<ProfessionalSkill> {
     const doc = await ProfessionalSkillModel.create({
       name: skill.name,
-      percentage: skill.percentage,
+      icon: skill.icon,
       createdAt: skill.createdAt,
     });
 
