@@ -1,5 +1,4 @@
 import { Request, Response, NextFunction } from 'express';
-import { AppError } from 'src/shared/errors/AppError';
 import { CreateProjectUseCase } from 'src/modules/projects/application/create-project.use-case';
 import { ListProjectsUseCase } from 'src/modules/projects/application/list-projects.use-case';
 import { GetProjectUseCase } from 'src/modules/projects/application/get-project.use-case';
@@ -17,7 +16,6 @@ export class ProjectController {
   create = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const image = pickImage(req);
-      if (!image) throw new AppError("El campo 'image' (archivo) es requerido", 400);
       const project = await this.createProjectUseCase.execute(req.body, image);
       res.status(201).json(project.toPublic());
     } catch (err) {
