@@ -1,8 +1,11 @@
+import type { CorsOptions } from 'cors';
 import { env } from 'src/shared/config/env';
 
-export const corsConfig = {
-  origin: env.ORIGIN || '*',
-  credentials: !!env.ORIGIN,
+const origins = env.ORIGIN?.split(',').map((o) => o.trim()).filter(Boolean) ?? [];
+
+export const corsConfig: CorsOptions = {
+  origin: origins.length ? origins : '*',
+  credentials: origins.length > 0,
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   allowedHeaders: ['Content-Type', 'Authorization', 'Cache-Control'],
 };
